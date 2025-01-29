@@ -28,7 +28,7 @@
         <ul class="nav-links d-flex justify-content-center gap-4 mb-0">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
+            <li><a href="#resume">My Resume</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -469,6 +469,53 @@
                 </div>
             </div>
 
+            <style>
+                .footer-section {
+                    margin-bottom: 30px;
+                }
+        
+                .footer-section h3 {
+                    color: #fff;
+                    margin-bottom: 20px;
+                    font-size: 1.2rem;
+                }
+        
+                .footer-section ul {
+                    list-style: none;
+                    padding: 0;
+                }
+        
+                .footer-section ul li {
+                    margin-bottom: 10px;
+                }
+        
+                .footer-section ul li a {
+                    color: #ccc;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                }
+        
+                .footer-section ul li a:hover {
+                    color: #fff;
+                }
+        
+                .visitor-count {
+                    color: #ccc;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-top: 15px;
+                    padding-top: 15px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                }
+        
+                .visitor-count-number {
+                    color: #2563eb;
+                    font-weight: bold;
+                }
+            </style>
+        </head>
+        <body>
             <!-- Quick Links -->
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -478,7 +525,29 @@
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="visitor-count">
+                    <span>Visitors:</span>
+                    <span id="visitorCount" class="visitor-count-number">0</span>
+                </div>
             </div>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const hasVisited = localStorage.getItem('hasVisited');
+                    const counterElement = document.getElementById('visitorCount');
+                    
+                    if (!hasVisited) {
+                        const currentCount = parseInt(localStorage.getItem('visitorCount') || '0');
+                        const newCount = currentCount + 1;
+                        localStorage.setItem('visitorCount', newCount.toString());
+                        localStorage.setItem('hasVisited', 'true');
+                        counterElement.textContent = newCount.toLocaleString();
+                    } else {
+                        const currentCount = parseInt(localStorage.getItem('visitorCount') || '0');
+                        counterElement.textContent = currentCount.toLocaleString();
+                    }
+                });
+            </script>
 
             <!-- Contact Info -->
             <div class="footer-section">
