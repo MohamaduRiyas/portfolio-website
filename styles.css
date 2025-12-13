@@ -7,12 +7,29 @@
     --text-secondary: #666666;
     --background-light: #ffffff;
     --background-dark: #f5f5f5;
+    --hero-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --card-bg: #ffffff;
+    --timeline-bg: #ffffff;
+    --link-color: #0066cc;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 3rem;
     --border-radius: 8px;
     --transition: all 0.3s ease;
+}
+
+/* Dark mode variables (used via body.dark-mode) */
+body.dark-mode {
+    --background-light: #121212;
+    --background-dark: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #cfcfcf;
+    --secondary-color: #66b3ff;
+    --hero-bg: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    --card-bg: #222;
+    --timeline-bg: #1b1b1b;
+    --link-color: #8ab8ff;
 }
 
 /* Base Styles */
@@ -32,6 +49,11 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--background-light);
+}
+
+/* Base link color uses variable for easy theming */
+a {
+    color: var(--link-color);
 }
 
 .container {
@@ -136,7 +158,7 @@ img:hover {
 /* Hero Section */
 .hero {
     padding: calc(4rem + var(--spacing-lg)) 0 var(--spacing-lg);
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: var(--hero-bg);
 }
 
 .hero-content {
@@ -519,7 +541,7 @@ section {
 }
 
 .project-card {
-    background-color: var(--background-light);
+    background-color: var(--card-bg);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -671,35 +693,34 @@ footer a:hover {
     background-color: #0056b3;
 }
 
-/* Dark Mode Styles */
+/* Dark-mode helpers: use CSS variables defined in body.dark-mode above */
 body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+    /* This block intentionally left empty; variables on body control theme styling */
 }
 
 body.dark-mode .navbar {
-    background-color: #333;
+    background-color: var(--card-bg);
 }
 
 body.dark-mode .hero {
-    background-color: #1e1e1e;
+    background: var(--hero-bg);
 }
 
 body.dark-mode .about, body.dark-mode .skills, body.dark-mode .projects, body.dark-mode .contact {
-    background-color: #1e1e1e;
+    background-color: var(--background-dark);
 }
 
 body.dark-mode .project-card {
-    background-color: #333;
+    background-color: var(--card-bg);
 }
 
 body.dark-mode a {
-    color: #ffffff;
+    color: var(--link-color);
 }
 
 body.dark-mode .primary-btn, body.dark-mode .secondary-btn {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--text-primary);
 }
 
 /* Adjust other elements as needed for dark mode */
